@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="rnonline">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="../scripts/app.js"></script>
+    <script src="../data/dummyData.js"></script>
+    <link rel="stylesheet" href="../css/table.css">
+  </head>
+  <body>
+    <h2>Todo</h2>
+    <div ng-controller="rnonlineController as control">
+      <input type="number" ng-model="control.stationID">
+      <button ng-click="control.updateDetector()" ng-disabled="control.editMode">Show Station</button>
+      <button ng-click="control.toggleEdit()" ng-if="!control.editMode">Edit</button>
+      <button ng-click="control.toggleEdit()" ng-if="control.editMode">Cancel</button>
+      <button ng-click="control.saveStation()" ng-if="control.editMode">Save</button>
+      <br>
+      <div ng-repeat="station in control.stations" class="station-table">
+        <div ng-repeat="(key, value) in station" class=table-row>
+          <div class="table-cell">
+            {{key}}
+          </div>
+          <div class="table-cell">
+            <div ng-if="!control.editMode">
+              {{value}}
+            </div>
+            <div ng-if="control.editMode">
+              <input ng-value="value">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
