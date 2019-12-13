@@ -13,10 +13,6 @@ angular.module('rnonline', [])
           }
         }
     }
-
-    rnonline.getStations = function() {
-      return rnonline.stations;
-    }
     rnonline.toggleEdit = function() {
       rnonline.editMode = !rnonline.editMode;
     }
