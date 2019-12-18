@@ -1,0 +1,13 @@
+<dropdown-select options="$ctrl.measurementOptions" selected=$ctrl.measurementSelect label="Measurement type"></dropdown-select>
+<dropdown-select options="$ctrl.formatOptions" selected="$ctrl.selectedFormat" label="Data format"></dropdown-select>
+<dropdown-select options="$ctrl.boradNameOptions" selected="$ctrl.selectedBoardName" label="Board Name"></dropdown-select>
+<div class="amplifier-response-inputs">
+  <textfield-input title="Frequencies" content="$ctrl.frequencies"></textfield-input>
+  <textfield-input title="Amplitude" content="$ctrl.amplitude"></textfield-input>
+  <textfield-input title="Phase" content="$ctrl.phase"></textfield-input>
+</div>
+{{$ctrl.selectedFormat}}
+{{$ctrl.measurementSelect}}
+{{$ctrl.frequencies}}
+{{$ctrl.amplitude}}
+{{$ctrl.phase}}

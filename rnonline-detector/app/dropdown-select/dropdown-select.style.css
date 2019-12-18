@@ -1,0 +1,9 @@
+.dropdown-select-row {
+  display: flex;
+}
+.dropdown-select-label {
+  flex: none;
+}
+.dropdown-select-dropdown {
+  flex: 3;
+}

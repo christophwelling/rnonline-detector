@@ -1,0 +1,11 @@
+<div class="dropdown-select-row">
+  <div class="dropdown-select-label">
+    {{$ctrl.label}}
+  </div>
+  <div class="dropdown-select-dropdown">
+    <select ng-model="$ctrl.selected" class=dropdown>
+      <option ng-repeat="option in $ctrl.options" value="{{option.value}}">{{option.label}}
+      </option>
+    </select>
+  </div>
+</div>
