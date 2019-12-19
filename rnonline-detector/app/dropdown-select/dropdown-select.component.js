@@ -7,11 +7,10 @@ angular.
     bindings: {
       options: '<',
       selected: '=',
-      label: '@'
+      label: '@',
+      change: '<?'
     },
     controller: ['$http', function detectorInterfaceController($http) {
       var self = this;
-      var options;
-      var selected;
     }]
   });

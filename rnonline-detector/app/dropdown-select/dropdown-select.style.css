@@ -2,8 +2,8 @@
   display: flex;
 }
 .dropdown-select-label {
-  flex: none;
+  flex: 1;
 }
 .dropdown-select-dropdown {
-  flex: 3;
+  flex: 10;
 }

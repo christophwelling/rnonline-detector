@@ -1,0 +1,12 @@
+.text-input-row {
+  display: flex;
+}
+.text-input-row-error {
+  background-color: red;
+}
+.text-input-label {
+  flex:1;
+}
+.text-input-write {
+  flex:10;
+}

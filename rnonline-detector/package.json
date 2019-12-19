@@ -1,0 +1,17 @@
+{
+  "name": "detector-webinterface",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Webinterface for detector",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "1.7.x",
+    "body-parser": "~1.5.2",
+    "bootstrap": "3.3.x",
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "mongodb": "^3.4.0",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.2.2"
+  }
+}
