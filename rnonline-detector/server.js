@@ -31,7 +31,6 @@
     });
     app.get('/api/getAmpMeasurement/:params', function(req,res) {
       var params = JSON.parse(req.params.params);
-      console.log(params)
       client.connect(function(err, db) {
         db.db('detector').collection('amp_boards').find({"name": params.boardname}, function(err,cursor){
           cursor.toArray(function(err, cursorArray) {
@@ -45,6 +44,16 @@
           })
         });
       });
+    });
+    app.post('/api/insertAmpMeasurement:amp', function(req,res) {
+      var amp = JSON.parse(req.params.amp);
+      amp.measurement.last_updated = new Date();
+      client.connect(function(err, db) {
+        db.db('detector').collection('amp_boards').updateOne({'name': amp.boardname}, {
+        '$push': {'channels': amp.measurement}
+      });
+      res.send('')
+      })
     })
 
 

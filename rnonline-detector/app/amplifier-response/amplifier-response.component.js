@@ -22,18 +22,21 @@ angular.
       self.amplitude = [];
       self.frequencies = [];
       self.phase = [];
-      $http.get('/api/getAmpBoards').then(function(reply) {
-        self.boardNameOptions = []
-        self.boards = reply.data;
-        console.log(self.boards)
-        for(var i=0;i<self.boards.length;i++) {
-          self.boardNameOptions.push({
-            value: i,
-            label: self.boards[i].name
-          });
-        }
-      });
       // --defining functions--
+      self.updateSelections = function() {
+        $http.get('/api/getAmpBoards').then(function(reply) {
+          self.boardNameOptions = []
+          self.boards = reply.data;
+          for(var i=0;i<self.boards.length;i++) {
+            self.boardNameOptions.push({
+              value: i,
+              label: self.boards[i].name
+            });
+          }
+          self.updateChannelIdOptions(self.selectedBoardName, self.measurementSelect);
+        });
+      }
+      self.updateSelections();
       self.onBoardChange = function(boardName) {
         self.updateChannelIdOptions(boardName, self.measurementSelect);
       }
@@ -79,6 +82,26 @@ angular.
           self.phase = data.phase
         })
       }
+      self.saveAmp = function() {
+        if (self.selectedChannelId == 'new') {
+          var channelId = self.newChannelId;
+        } else {
+          var channelId = self.selectedChannelId;
+        }
+        var amp = {
+          boardname: self.boards[self.selectedBoardName].name,
+          measurement: {
+            id: channelId,
+            S_parameter: self.measurementSelect,
+            frequencies: self.frequencies.map(self.convertArrayToNumbers),
+            mag: self.amplitude.map(self.convertArrayToNumbers),
+            phase: self.phase.map(self.convertArrayToNumbers)
+          }
+        }
+        $http.post('/api/insertAmpMeasurement'+JSON.stringify(amp)).then(function() {
+          self.updateSelections();
+        });
+      }
       self.showLoadButton = function() {
         if (self.measurementSelect == undefined) {
           return false;
@@ -96,6 +119,9 @@ angular.
           return true;
         }
         return false;
+      }
+      self.convertArrayToNumbers = function(element) {
+        return Number(element);
       }
     }]
   });

@@ -37,9 +37,6 @@ angular.
           }
         }
         if (self.minDigits != undefined) {
-          console.log('!');
-          console.log(self.value.length)
-          console.log(self.minDigits)
           if (self.value.length < self.minDigits) {
             return true;
           }
