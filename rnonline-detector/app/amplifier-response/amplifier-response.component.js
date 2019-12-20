@@ -5,6 +5,7 @@ angular.
   component('amplifierResponse', {
     templateUrl: 'amplifier-response/amplifier-response.template.html',
     controller: ['$http', function detectorInterfaceController($http) {
+      // --setting up component--
       var self = this;
       self.boards = null;
       self.measurementOptions = [
@@ -18,7 +19,18 @@ angular.
         {value: '\n', label: 'New line per value'}
       ];
       self.selectedFormat = ','
-
+      $http.get('/api/getAmpBoards').then(function(reply) {
+        self.boardNameOptions = []
+        self.boards = reply.data;
+        console.log(self.boards)
+        for(var i=0;i<self.boards.length;i++) {
+          self.boardNameOptions.push({
+            value: i,
+            label: self.boards[i].name
+          });
+        }
+      });
+      // --defining functions--
       self.onBoardChange = function(boardName) {
         self.updateChannelIdOptions(boardName, self.measurementSelect);
       }
@@ -57,26 +69,24 @@ angular.
           measurement: self.measurementSelect,
           channel: channelId
         }
-        console.log(JSON.stringify(params))
         $http.get('/api/getAmpMeasurement/'+JSON.stringify(params)).then(function(reply) {
           var data = reply.data;
-          console.log(data);
           self.frequencies = data.frequencies;
           self.amplitude = data.mag;
           self.phase = data.phase
         })
       }
-      self.updateChannelIdOptions(0);
-      $http.get('/api/getAmpBoards').then(function(reply) {
-        self.boardNameOptions = []
-        self.boards = reply.data;
-        console.log(self.boards)
-        for(var i=0;i<self.boards.length;i++) {
-          self.boardNameOptions.push({
-            value: i,
-            label: self.boards[i].name
-          });
+      self.showLoadButton = function() {
+        if (self.measurementSelect == undefined) {
+          return false;
         }
-      });
+        if (self.selectedBoardName == undefined) {
+          return false;
+        }
+        if (self.selectedChannelId == undefined || self.selectedChannelId == 'new') {
+          return false;
+        }
+        return true;
+      }
     }]
   });

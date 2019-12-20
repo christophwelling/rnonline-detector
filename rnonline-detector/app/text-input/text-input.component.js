@@ -8,7 +8,8 @@ angular.
       value: '=',
       label: '@',
       type: '@',
-      maxDigits: '@'
+      maxDigits: '@',
+      minDigits: '@'
     },
     controller: ['$http', function detectorInterfaceController($http) {
       var self = this;
@@ -32,6 +33,14 @@ angular.
         }
         if (self.maxDigits != undefined) {
           if (self.value.length > self.maxDigits) {
+            return true;
+          }
+        }
+        if (self.minDigits != undefined) {
+          console.log('!');
+          console.log(self.value.length)
+          console.log(self.minDigits)
+          if (self.value.length < self.minDigits) {
             return true;
           }
         }
