@@ -7,7 +7,7 @@
   "dependencies": {
     "angular": "1.7.x",
     "body-parser": "~1.5.2",
-    "bootstrap": "3.3.x",
+    "bootstrap": "3.4.x",
     "express": "~4.7.2",
     "method-override": "~3.0.0",
     "mongodb": "^3.4.0",
