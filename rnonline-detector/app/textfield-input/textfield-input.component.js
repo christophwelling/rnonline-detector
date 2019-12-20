@@ -6,7 +6,8 @@ angular.
     templateUrl: 'textfield-input/textfield-input.template.html',
     bindings:{
       content: '=',
-      title: "@"
+      title: "@",
+      separator: '@'
     },
     controller: ['$http', function detectorInterfaceController($http) {
       var self = this;
@@ -17,10 +18,10 @@ angular.
           if (self.content == undefined) {
             return "";
           }
-          return self.content.join(",");
+          return self.content.join(self.separator);
         },
         set text(newText) {
-          self.content = newText.split(",");
+          self.content = newText.split(self.separator);
         }
       }
     }]

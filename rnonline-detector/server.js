@@ -21,11 +21,27 @@
     // API functions ==================================================
 
     app.get('/api/getAmpBoards', function(req, res) {
-      console.log('inside api function')
       client.connect(function(err, db) {
         db.db('detector').collection('amp_boards').find({}, function(err,cursor){
           cursor.toArray(function(err, cursorArray) {
             res.json(cursorArray)
+          })
+        });
+      });
+    });
+    app.get('/api/getAmpMeasurement/:params', function(req,res) {
+      var params = JSON.parse(req.params.params);
+      console.log(params)
+      client.connect(function(err, db) {
+        db.db('detector').collection('amp_boards').find({"name": params.boardname}, function(err,cursor){
+          cursor.toArray(function(err, cursorArray) {
+            board = cursorArray[0];
+            for (var i=0;i<board.channels.length;i++) {
+              if ((board.channels[i].id == params.channel)&&(board.channels[i].S_parameter == params.measurement)) {
+                res.json(board.channels[i])
+                return
+              }
+            }
           })
         });
       });

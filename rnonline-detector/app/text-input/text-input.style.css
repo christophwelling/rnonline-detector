@@ -1,12 +1,16 @@
 .text-input-row {
   display: flex;
+  padding: 5px;
 }
 .text-input-row-error {
-  background-color: red;
+  background-color: #d9534f;
 }
 .text-input-label {
   flex:1;
 }
 .text-input-write {
-  flex:10;
+  flex:3;
+}
+.text-input-field {
+  width: 100%;
 }

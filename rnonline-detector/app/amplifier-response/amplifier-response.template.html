@@ -1,11 +1,15 @@
-<dropdown-select options="$ctrl.measurementOptions" selected=$ctrl.measurementSelect label="Measurement type"></dropdown-select>
-<dropdown-select options="$ctrl.formatOptions" selected="$ctrl.selectedFormat" label="Data format"></dropdown-select>
-<dropdown-select options="$ctrl.boardNameOptions" selected="$ctrl.selectedBoardName" change="$ctrl.updateChannelIdOptions" label="Board Name"></dropdown-select>
-<dropdown-select options="$ctrl.channelIdOptions" selected="$ctrl.selectedChannelId" label="Channel"></dropdown-select>
-<text-input value="$ctrl.newChannelId" label="Channel ID" type="id" max-digits="1" ng-if="$ctrl.selectedChannelId=='new'"></text-input>
-<button ng-click="$ctrl.loadAmp()">Load Amplifier</button>
-<div class="amplifier-response-inputs">
-  <textfield-input title="Frequencies" content="$ctrl.frequencies"></textfield-input>
-  <textfield-input title="Amplitude" content="$ctrl.amplitude"></textfield-input>
-  <textfield-input title="Phase" content="$ctrl.phase"></textfield-input>
+<div class="amplifier-response">
+  <div class="amplifier-response-options">
+    <dropdown-select options="$ctrl.measurementOptions" selected="$ctrl.measurementSelect" change="$ctrl.onMeasurementChange" label="Measurement type"></dropdown-select>
+    <dropdown-select options="$ctrl.boardNameOptions" selected="$ctrl.selectedBoardName" change="$ctrl.onBoardChange" label="Board Name"></dropdown-select>
+    <dropdown-select options="$ctrl.channelIdOptions" selected="$ctrl.selectedChannelId" label="Channel"></dropdown-select>
+    <text-input value="$ctrl.newChannelId" label="Channel ID" type="id" max-digits="1" ng-if="$ctrl.selectedChannelId=='new'"></text-input>
+    <dropdown-select options="$ctrl.formatOptions" selected="$ctrl.selectedFormat" label="Data format"></dropdown-select>
+    <button ng-click="$ctrl.loadAmp()" class="btn btn-default">Load Amplifier</button>
+  </div>
+  <div class="amplifier-response-inputs">
+    <textfield-input title="Frequencies" content="$ctrl.frequencies" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+    <textfield-input title="Amplitude" content="$ctrl.amplitude" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+    <textfield-input title="Phase" content="$ctrl.phase" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+  </div>
 </div>

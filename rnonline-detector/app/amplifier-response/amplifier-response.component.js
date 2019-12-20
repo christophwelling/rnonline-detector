@@ -14,11 +14,18 @@ angular.
       ];
       self.measurementSelect = 'S12'
       self.formatOptions = [
-        {value: 'comma', label: 'Comma separated'},
-        {value: 'line', label: 'New line per value'}
+        {value: ',', label: 'Comma separated'},
+        {value: '\n', label: 'New line per value'}
       ];
-      self.selectedFormat = 'line'
-      self.updateChannelIdOptions = function(boardName) {
+      self.selectedFormat = ','
+
+      self.onBoardChange = function(boardName) {
+        self.updateChannelIdOptions(boardName, self.measurementSelect);
+      }
+      self.onMeasurementChange = function(measurement) {
+        self.updateChannelIdOptions(self.selectedBoardName, measurement);
+      }
+      self.updateChannelIdOptions = function(boardName, measurement) {
         self.channelIdOptions = [{
           label: 'New',
           value: 'new'
@@ -30,7 +37,7 @@ angular.
           return;
         }
         for(var i=0; i<self.boards[boardName].channels.length;i++) {
-          if (self.boards[boardName].channels[i].S_parameter == self.measurementSelect) {
+          if (self.boards[boardName].channels[i].S_parameter == measurement) {
             self.channelIdOptions.push({
               value: self.boards[boardName].channels[i].id,
               label: self.boards[boardName].channels[i].id

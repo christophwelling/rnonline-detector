@@ -3,7 +3,7 @@
     {{$ctrl.label}}
   </div>
   <div class="dropdown-select-dropdown">
-    <select ng-model="$ctrl.selected" class="dropdown" ng-change="$ctrl.change($ctrl.selected)">
+    <select ng-model="$ctrl.selected" class="dropdown-select-element form form-control" ng-change="$ctrl.change($ctrl.selected)">
       <option ng-repeat="option in $ctrl.options" value="{{option.value}}">{{option.label}}
       </option>
     </select>

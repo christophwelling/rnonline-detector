@@ -1,9 +1,13 @@
 .dropdown-select-row {
   display: flex;
+  padding: 5px;
 }
 .dropdown-select-label {
   flex: 1;
 }
 .dropdown-select-dropdown {
-  flex: 10;
+  flex: 3;
+}
+.dropdown-select-element {
+  width: 100%;
 }
