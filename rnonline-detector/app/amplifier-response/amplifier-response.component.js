@@ -38,10 +38,32 @@ angular.
           }
         }
       }
+      self.loadAmp = function() {
+        if (self.selectedChannelId == 'new') {
+          var channelId = self.newChannelId;
+        } else {
+          var channelId = self.selectedChannelId;
+        }
+
+        var params = {
+          boardname: self.boards[self.selectedBoardName].name,
+          measurement: self.measurementSelect,
+          channel: channelId
+        }
+        console.log(JSON.stringify(params))
+        $http.get('/api/getAmpMeasurement/'+JSON.stringify(params)).then(function(reply) {
+          var data = reply.data;
+          console.log(data);
+          self.frequencies = data.frequencies;
+          self.amplitude = data.mag;
+          self.phase = data.phase
+        })
+      }
       self.updateChannelIdOptions(0);
       $http.get('/api/getAmpBoards').then(function(reply) {
         self.boardNameOptions = []
         self.boards = reply.data;
+        console.log(self.boards)
         for(var i=0;i<self.boards.length;i++) {
           self.boardNameOptions.push({
             value: i,

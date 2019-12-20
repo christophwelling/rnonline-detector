@@ -3,6 +3,7 @@
 <dropdown-select options="$ctrl.boardNameOptions" selected="$ctrl.selectedBoardName" change="$ctrl.updateChannelIdOptions" label="Board Name"></dropdown-select>
 <dropdown-select options="$ctrl.channelIdOptions" selected="$ctrl.selectedChannelId" label="Channel"></dropdown-select>
 <text-input value="$ctrl.newChannelId" label="Channel ID" type="id" max-digits="1" ng-if="$ctrl.selectedChannelId=='new'"></text-input>
+<button ng-click="$ctrl.loadAmp()">Load Amplifier</button>
 <div class="amplifier-response-inputs">
   <textfield-input title="Frequencies" content="$ctrl.frequencies"></textfield-input>
   <textfield-input title="Amplitude" content="$ctrl.amplitude"></textfield-input>

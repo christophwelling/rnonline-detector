@@ -3,6 +3,5 @@
     {{$ctrl.title}}
   </div>
   <div class="panel-body">
-    <textarea ng-model="$ctrl.content"></textarea>
+    <textarea ng-model="$ctrl.display.text" ng-model-options="{getterSetter:true}"></textarea>
   </div>
-</div>

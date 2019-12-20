@@ -12,5 +12,16 @@ angular.
       var self = this;
       var content;
       var title;
+      self.display = {
+        get text() {
+          if (self.content == undefined) {
+            return "";
+          }
+          return self.content.join(",");
+        },
+        set text(newText) {
+          self.content = newText.split(",");
+        }
+      }
     }]
   });
