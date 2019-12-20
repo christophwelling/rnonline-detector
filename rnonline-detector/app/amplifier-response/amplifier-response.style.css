@@ -2,10 +2,21 @@
   width: 50%;
   padding: 50px;
 }
-.amplifier-response-options:nth-child(even) {
-  background-color: blue;
-}
 .amplifier-response-inputs {
   display: flex;
+  align-items:stretch;
   width: 100%;
+}
+.amplifier-response-input {
+  flex:1;
+  height: 200px;
+}
+.amp-response-format-error {
+  width: 100%;
+  margin: 5px;
+  padding: 25px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50;
+  background-color: #d9534f;
 }

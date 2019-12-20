@@ -7,9 +7,10 @@
     <dropdown-select options="$ctrl.formatOptions" selected="$ctrl.selectedFormat" label="Data format"></dropdown-select>
     <button ng-click="$ctrl.loadAmp()" class="btn btn-default" ng-if="$ctrl.showLoadButton()">Load Amplifier</button>
   </div>
+  <div class="amp-response-format-error" ng-if="$ctrl.showAmpFormatError()">Inputs need to have the same length</div>
   <div class="amplifier-response-inputs">
-    <textfield-input title="Frequencies" content="$ctrl.frequencies" separator="{{$ctrl.selectedFormat}}"></textfield-input>
-    <textfield-input title="Amplitude" content="$ctrl.amplitude" separator="{{$ctrl.selectedFormat}}"></textfield-input>
-    <textfield-input title="Phase" content="$ctrl.phase" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+    <textfield-input class="amplifier-response-input" title="Frequencies" content="$ctrl.frequencies" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+    <textfield-input class="amplifier-response-input" title="Amplitude" content="$ctrl.amplitude" separator="{{$ctrl.selectedFormat}}"></textfield-input>
+    <textfield-input class="amplifier-response-input" title="Phase" content="$ctrl.phase" separator="{{$ctrl.selectedFormat}}"></textfield-input>
   </div>
 </div>

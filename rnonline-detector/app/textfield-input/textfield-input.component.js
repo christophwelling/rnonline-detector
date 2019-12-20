@@ -11,8 +11,6 @@ angular.
     },
     controller: ['$http', function detectorInterfaceController($http) {
       var self = this;
-      var content;
-      var title;
       self.display = {
         get text() {
           if (self.content == undefined) {
@@ -23,6 +21,19 @@ angular.
         set text(newText) {
           self.content = newText.split(self.separator);
         }
+      }
+      self.isNan = function(string) {
+        return isNaN(string);
+      }
+      self.isValid = function() {
+        if (self.content == undefined) {
+          return false;
+        }
+        if (self.content.length == 0) {
+          return false;
+        }
+        var isNan =  self.content.some(self.isNan);
+        return !isNan
       }
     }]
   });

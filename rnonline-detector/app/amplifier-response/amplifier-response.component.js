@@ -19,6 +19,9 @@ angular.
         {value: '\n', label: 'New line per value'}
       ];
       self.selectedFormat = ','
+      self.amplitude = [];
+      self.frequencies = [];
+      self.phase = [];
       $http.get('/api/getAmpBoards').then(function(reply) {
         self.boardNameOptions = []
         self.boards = reply.data;
@@ -87,6 +90,12 @@ angular.
           return false;
         }
         return true;
+      }
+      self.showAmpFormatError = function() {
+        if (self.frequencies.length!=self.amplitude.length||self.amplitude.length!=self.phase.length) {
+          return true;
+        }
+        return false;
       }
     }]
   });

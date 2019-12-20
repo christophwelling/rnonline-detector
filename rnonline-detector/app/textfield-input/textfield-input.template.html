@@ -1,7 +1,10 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    {{$ctrl.title}}
+<div class="textfield-input">
+  <div class="panel panel-default" ng-class="{'panel-danger': !$ctrl.isValid()}">
+    <div class="panel-heading">
+      {{$ctrl.title}}
+    </div>
+    <div class="panel-body">
+      <textarea ng-model="$ctrl.display.text" ng-model-options="{getterSetter:true}"></textarea>
+    </div>
   </div>
-  <div class="panel-body">
-    <textarea ng-model="$ctrl.display.text" ng-model-options="{getterSetter:true}"></textarea>
-  </div>
+</div>
