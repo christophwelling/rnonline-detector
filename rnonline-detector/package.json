@@ -5,7 +5,7 @@
   "description": "Webinterface for detector",
   "main": "server.js",
   "dependencies": {
-    "angular": "1.7.x",
+    "angular": "1.8.x",
     "body-parser": "~1.5.2",
     "bootstrap": "3.4.x",
     "express": "~4.7.2",
